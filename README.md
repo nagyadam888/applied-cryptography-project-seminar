@@ -8,8 +8,10 @@ will manage their assignments as separate branches of this repo.
 1. Login or create your GitHub account.
 2. Make a fork of this project. (You can find a button for it on GitHub UI.)
 3. Clone the project from your own account 
+
    ``git clone https://github.com/<your-username>/applied-cryptography-project-seminar``
 4. Create your own branch and switch to that branch
+
    ``git branch <your neptun id> create``
    
    ``git switch <your neptun id>``
