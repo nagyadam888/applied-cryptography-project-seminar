@@ -10,7 +10,8 @@ will manage their assignments as separate branches of this repo.
 3. Clone the project from your own account 
    ``git clone https://github.com/<your-username>/applied-cryptography-project-seminar``
 4. Create your own branch and switch to that branch
-   ``git branch create <your neptun id>``
+   ``git branch <your neptun id> create``
+   
    ``git switch <your neptun id>``
 5. Work on the project and update your changes to your GitHub repository.
 6. Create pull request on GitHub UI when you want me to check your work (I will
