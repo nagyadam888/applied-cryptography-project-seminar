@@ -18,15 +18,15 @@ When the participants are relatively near to each other (e.g. in the same city),
 ```
 double flatEarthDistance(double lng1, double lat1, double lng2, double lat2) {
 
-p1 = rad(lat1);
-p2 = rad(lng1) * cos(lat1);
+    p1 = rad(lat1);
+    p2 = rad(lng1) * cos(lat1);
 
-q1 = rad(lat2);
-q2 = rad(lng2) * cos(lat2);
+    q1 = rad(lat2);
+    q2 = rad(lng2) * cos(lat2);
 
-|PQ| = pp_dist_protocol(...); // privacy-preserving distance calculation protocol
+    |PQ| = pp_dist_protocol(...); // privacy-preserving distance calculation protocol. multiple messages between participants
 
-return |PQ| * DEGREES_TO_METERS;
+    return |PQ| * DEGREES_TO_METERS;
 }
 ```
 
@@ -62,14 +62,23 @@ We see, that the two geo-locations are linked to each other in the calculations,
 2) Same goes for the division by two inside of the sinus function: \((x-y) / 2 = x/2 - y/2 \).
 3) Now, the actual sinus function has a convenient identity: \(sin(x-y) = sin(x)*cos(y) - cos(x)*sin(y)\).
 4) By putting everything together, we obtain: 
-\( a = sin²(lat2)*cos²(lat1) - 2*sin(lat2)*cos(lat1)*cos(lat2)*sin(lat1) + cos²(lat2)*sin²(lat1) + [sin²(lng2)*cos²(lng1)-2*sin(lng2)*cos(lng1)*cos(lng2)*sin(lng1) + cos²(lng2) * sind²(lng1)] * cos(lat1)*cos(lat2)\)
+ a = sin²(lat2)*cos²(lat1) - 2*sin(lat2)*cos(lat1)*cos(lat2)*sin(lat1) + cos²(lat2)*sin²(lat1) + sin²(lng2)*cos²(lng1)-2*sin(lng2)*cos(lng1)*cos(lng2)*sin(lng1) + cos²(lng2) * sin²(lng1) * cos(lat1)*cos(lat2)\)
 
 This can be rewritten as a scalar product with 6-dimensional vectors:
 
-\(
- P = (c²(lat1),  c(lat1)s(lat1)sqrt(2), s²(lat1), c²(lng1)c(lat1),  c(lng1)s(lng1)c(lat1)sqrt(2), s²(lng1)c(lat1)),
- Q = (c²(lat2), -c(lat2)s(lat2)sqrt(2), s²(lat2), c²(lng2)c(lat2), -c(lng2)s(lng2)c(lat2)sqrt(2), s²(lng2)c(lat2))
-\)
+ P = (c²(lat1),  
+      c(lat1)s(lat1)sqrt(2), 
+      s²(lat1), 
+      c²(lng1)c(lat1),  
+      c(lng1)s(lng1)c(lat1)sqrt(2), 
+      s²(lng1)c(lat1))
+      
+ Q = (c²(lat2), 
+      -c(lat2)s(lat2)sqrt(2), 
+      s²(lat2), 
+      c²(lng2)c(lat2), 
+      -c(lng2)s(lng2)c(lat2)sqrt(2), 
+      s²(lng2)c(lat2))
 
 Hence, we can retrieve a with the privacy-preserving scalar product calculation protocol. The following calculations of the haversine function can be then computed seperately on each client device.
 
