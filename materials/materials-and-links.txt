@@ -1,0 +1,25 @@
+The project is based on privacy preserving scalar product calculation.
+
+The paper it is originally based on:
+https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7536716
+
+
+Website containing the flat-earth distance calculation model (simple):
+http://jonisalonen.com/2014/computing-distance-between-coordinates-can-be-simple-and-fast/
+
+
+Source code for (non-secure) haversine distance calculation:
+http://stackoverflow.com/a/16794680/3841017
+
+
+
+OmNet++ network simulation framework:
+https://omnetpp.org/
+
+
+Paillier encryption library for C:
+http://hms.isi.jhu.edu/acsc/libpaillier/
+
+
+GMP (GNU MP Bignum) library for C (heavily used by the Paillier encryption library and partly by myself):
+https://gmplib.org/
